@@ -1,0 +1,233 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    /* background: linear-gradient(120deg, #f6d365, #fda085); */
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Fixes the background to cover the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #b3cde0, #f0f4f8); /* More contrasted light blue gradient */
+    z-index: -1; /* Place behind the content */
+}
+
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    padding: 10px;
+    background-color: #34495e;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    /* Space between the grid and the button */
+
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+}
+
+/* Style for editable tiles */
+.tile.editing {
+    background-color: #f39c12;
+    color: #2c3e50;
+    cursor: default;
+}
+
+/* Hover effect disabled for empty or editing tiles */
+.tile:not(.editing):not(.empty):hover {
+    background-color: #2980b9;
+}
+
+/* Styles for empty tiles and duplicate/multiple blank tiles */
+.tile.empty {
+    background-color: #ecf0f1;
+    cursor: default;
+}
+
+.tile.duplicate {
+    color: #e74c3c;
+    /* Red color for duplicates */
+}
+
+.tile.multiple-blanks {
+    background-color: #f2b5b5;
+    /* Light red for multiple blank tiles */
+}
+
+/* Style for the Solve! button */
+
+
+
+#solveButton:active {
+    transform: scale(0.95);
+    /* Slightly shrink button on click */
+}
+
+
+#solveButton {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: #fff;
+    border: 1px solid #388E3C;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#solveButton:hover {
+    background-color: #45A049;
+}
+
+/* Result card styling */
+.result-card {
+    display: none; /* Hidden by default */
+    width: calc(100% - 40px); /* Adjust width with some padding */
+    max-width: 800px; /* Optional: Limit the maximum width */
+    background: linear-gradient(145deg, #f0f0f0, #e0e0e0); /* Light gradient */
+    border: 1px solid #ccc; /* Slightly darker border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Space above and below the card, centered */
+    text-align: center;
+    box-sizing: border-box;
+}
+.result-card p {
+    font-size: 1.2rem; /* Smaller than the heading */
+    color: #2c3e50;
+    margin-bottom: 30px; /* Increased spacing below the moves line */
+  }
+
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    /* Set exact size for columns */
+    gap: 2px;
+    /* Adjust gap to ensure tiles fit well */
+    margin: 10px 0;
+    justify-content: center;
+    /* Center the grid within the card */
+}
+
+/* Solution tile styling */
+.solution-tile {
+    width: 60px; /* Adjust as needed */
+    height: 60px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff; /* Tile background color */
+    border: 2px solid #333; /* Darker border for contrast */
+    border-radius: 4px;
+    font-size: 1.5rem; /* Adjust as needed */
+    color: #333;
+    text-align: center;
+    font-weight: bold; /* Make the numbers stand out */
+}
+
+/* Styles for step labels */
+.step-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 20px; /* Equal margin on all sides */
+    color: #333;
+}
+
+/* Styles for spacing below each grid */
+.grid-spacing {
+    height: 20px;
+    /* Adjust spacing as needed */
+}
+
+/* Highlight the number of moves */
+.moves-count {
+    font-weight: bold;
+    color: #d32f2f; /* Deep red color */
+    font-size: 1.5rem; /* Increase font size */
+  }
+
+  /* Highlight changed tiles in the solution grid */
+  .solution-tile.changed {
+    background-color: #fff3e0; /* Softer, slightly orangish yellow */
+}
+
+/* GitHub link styles */
+.github-link {
+    display: flex;
+    align-items: center;
+    margin: 0 0 30px; /* Top margin zero, increased bottom margin */
+    padding: 8px 12px;
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Dark grey link color */
+    font-size: 0.9rem; /* Smaller font size */
+    font-weight: normal; /* Normal weight */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.github-link:hover {
+    color: #555; /* Slightly darker grey on hover */
+}
+
+.github-icon {
+    width: 24px; /* Icon size */
+    height: 24px; /* Icon size */
+    margin-right: 8px; /* Space between icon and text */
+    vertical-align: middle; /* Align icon with text */
+}
+
+/* Instruction text styles */
+.instructions {
+    font-size: 0.8rem; /* Slightly smaller font size */
+    color: #666; /* Slightly lighter color */
+    margin: 0 0 30px; /* Margin below the text */
+    text-align: center; /* Center align the text */
+}
+
+.instructions .key {
+    display: inline-block;
+    background-color: #ddd; /* Grayish background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 2px 6px; /* Padding around the text */
+    margin: 0 2px; /* Space between keys */
+    font-family: monospace; /* Monospace font for key appearance */
+    font-size: 0.9rem; /* Slightly smaller font size */
+}

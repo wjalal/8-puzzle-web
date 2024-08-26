@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8-Puzzle Solver</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>8-Puzzle Solver</h1>
+  <!-- GitHub Link -->
+  <a href="https://github.com/wjalal/8-puzzle-web" target="_blank" class="github-link">
+    <img src="github.svg" alt="GitHub Logo" class="github-icon">
+    https://github.com/wjalal/8-puzzle-web
+  </a>
+  <!-- Instruction Text -->
+  <p class="instructions">
+    Click on cells and enter values with keyboard.<br>
+    Pressing <span class="key">0</span>, <span class="key">-</span>, or <span class="key">SPACE</span> after clicking a cell will make the cell empty.
+  </p>
+
+  <div class="puzzle-container">
+    <!-- Tiles will be generated here -->
+    <div class="tile">1</div>
+    <div class="tile">2</div>
+    <div class="tile">3</div>
+    <div class="tile">4</div>
+    <div class="tile">5</div>
+    <div class="tile">6</div>
+    <div class="tile">7</div>
+    <div class="tile">8</div>
+    <div class="tile empty"></div>
+  </div>
+  <button id="solveButton">Solve!</button>
+  <div id="resultCard" class="result-card"></div>
+  <script src="script.js"></script>
+</body>
+</html>
